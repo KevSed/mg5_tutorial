@@ -86,3 +86,5 @@ Also, to automate Mad Graph processes, you can use scripts of the following fash
 ```
 ~> bin/madevent whatever.mg5
 ```
+
+## Mad Analysis
