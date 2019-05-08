@@ -58,6 +58,18 @@ sets a symmetric beam energy of 13TeV:
 > set ebeam1 6500
 > set ebeam2 6500
 ```
+same is achieved via
+```
+> set lep 13000
+```
+
+Also to set the running coupling to the value at a certain renormalization energy use
+
+```
+> set fixed_scale 91.1876
+```
+
+to e.g. set it to the Z boson mass.
 
 After executing, the variables and the generated cross-section are displayed in your browser. To set
 EFT-coefficients more permanently for a certain model, you can create a `restrict_default.dat` in the
@@ -85,6 +97,24 @@ Also, to automate Mad Graph processes, you can use scripts of the following fash
 
 ```
 ~> bin/madevent whatever.mg5
+```
+
+The way to exactly reproduce a generated process is shown in the file `proc_card_mg5.dat`.
+To safe all results for a process you can call the method `print_results`.
+
+```
+> print_results --path=./results.txt --format=short
+```
+
+From there you can e.g. read in the cross-sections for further analyses or plots. The file
+contains the run name, the tag, the cross section, the uncertainty, the number of
+generated events.
+
+To remove all runs in a process you can start a session with `bin/madevent` within the
+directory and execute
+
+```
+> remove all banner -f
 ```
 
 ## Mad Analysis
