@@ -5,7 +5,7 @@ In Mad Graph 5 the general syntax for parameter setting is PARAM=1 (PARAM <= 1) 
 
 ## Doing EFT physics
 
-To use EFT operators in top-physics import e.g. the dim6 top model within your mg5 session. You may need
+To use EFT operators in top-physics import e.g. the [dim6 top model](https://feynrules.irmp.ucl.ac.be/wiki/dim6top) within your mg5 session. You may need
 to download the model first.
 
 ```
