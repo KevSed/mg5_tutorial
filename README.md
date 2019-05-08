@@ -13,11 +13,11 @@ to download the model first.
 ```
 
 The available parameters are:
-* *FCNC*: configuration of FCNC interactions (=0 excludes FCNC interactions).
-* *DIM6^2*: coupling order of the dim6 EFT operators at the squared level (=1 e.g.: cross-section only
+* **FCNC**: configuration of FCNC interactions (=0 excludes FCNC interactions).
+* **DIM6^2**: coupling order of the dim6 EFT operators at the squared level (=1 e.g.: cross-section only
 contains linear Wilson-coefficients, i.e. the SM-EFT interference terms).
-* *DIM6*: coupling order at amplitude (diagram) level (= max. number of EFT vertices).
-* *QED*: max. allowed QED coupling order (default 0)
+* **DIM6**: coupling order at amplitude (diagram) level (= max. number of EFT vertices).
+* **QED**: max. allowed QED coupling order (default 0)
 
 To generate a process at parton level (e.g. g g -> t t~) use:
 
