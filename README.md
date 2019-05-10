@@ -156,7 +156,7 @@ Analyses within MA5 always follow the same scheme:
 
 ### First steps with MadAnalysis5 (standalone)
 
-For further information look among others [here](https://arxiv.org/pdf/1206.1599.pdf).
+For further information look among others [here](https://arxiv.org/pdf/1206.1599.pdf) and [here](http://madanalysis.irmp.ucl.ac.be/).
 Depending on the location of the MA5 installation the particle content changes. E.g. if
 installed inside a MadGraph installation it automatically uses MG5's particle content.
 Generally, the content can be displayed within an MA5 session via:
