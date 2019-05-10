@@ -156,6 +156,7 @@ Analyses within MA5 always follow the same scheme:
 
 ### First steps with MadAnalysis5 (standalone)
 
+For further information look among others [here](https://arxiv.org/pdf/1206.1599.pdf).
 Depending on the location of the MA5 installation the particle content changes. E.g. if
 installed inside a MadGraph installation it automatically uses MG5's particle content.
 Generally, the content can be displayed within an MA5 session via:
@@ -196,6 +197,12 @@ To tell MA5 to generate plots you can then use
 
 ```
 ma5> plot M(mu) 20 0 100
+```
+
+Or to generate a preview of that plot use
+
+```
+ma5> preview <hist>
 ```
 
 This example tells MA5 to plot the mu+ mu- invariant mass in 20 bins ranging
