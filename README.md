@@ -233,3 +233,13 @@ directory.
 
 Furthermore, standalone `python` and `C++` files for every histogram are created. You
 can find them in the process' directory under `HTML/<runname>/tag_<*>/Output/Histos/MadAnalysis5job_<*>/`.
+
+
+### Useful references (cumulated)
+
+* https://github.com/kenmimasu/RootAnalyser
+* https://arxiv.org/pdf/1802.07237.pdf
+* https://arxiv.org/pdf/1405.0301.pdf
+* https://www.sciencedirect.com/science/article/pii/S0010465512002950
+* http://madanalysis.irmp.ucl.ac.be/
+* https://arxiv.org/pdf/1206.1599.pdf
