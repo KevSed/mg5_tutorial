@@ -9,7 +9,7 @@ To use EFT operators in top-physics import e.g. the [dim6 top model](https://fey
 to download the model first.
 
 ```
-> import model dim6top_LO_UFO
+mg5> import model dim6top_LO_UFO
 ```
 
 The available parameters are:
@@ -22,26 +22,26 @@ contains linear Wilson-coefficients, i.e. the SM-EFT interference terms).
 To generate a process at parton level (e.g. g g -> t t~) use:
 
 ```
-> generate g g > t t~
+mg5> generate g g > t t~
 ```
 
 To display all generated diagrams use:
 
 ```
-> display diagrams
+mg5> display diagrams
 ```
 
 which will open a pdf file with the Feynman diagrams with the EFT operator vertices highlighted by a blob.
 To then safe the output use:
 
 ```
-> output [name_of_process_output]
+mg5> output [name_of_process_output]
 ```
 
 Then a run can be launched, e.g. a testrun:
 
 ```
-> launch --name=testrun
+mg5> launch --name=testrun
 ```
 
 This gives you the opportunity to switch specific programs on or off, like the showering, detector
@@ -55,18 +55,18 @@ command to set certain parameters. The autocompletion `tab` shows you the availa
 sets a symmetric beam energy of 13TeV:
 
 ```
-> set ebeam1 6500
-> set ebeam2 6500
+mg5> set ebeam1 6500
+mg5> set ebeam2 6500
 ```
 same is achieved via
 ```
-> set lep 13000
+mg5> set lep 13000
 ```
 
 Also to set the running coupling to the value at a certain renormalization energy use
 
 ```
-> set fixed_scale 91.1876
+mg5> set fixed_scale 91.1876
 ```
 
 to e.g. set it to the Z boson mass.
@@ -83,7 +83,7 @@ The file can then be modified and will set the default parameters every time the
 card of the type `restrict_[name].dat` (with `[name]` not containing a `-`) can be loaded by appending a `-[name]` when loading the model:
 
 ```
-> import model dim6top_LO_UFO-[name]
+mg5> import model dim6top_LO_UFO-[name]
 ```
 
 When you exit an mg5 session, your parameters and configurations from within the session are lost. Of course
@@ -103,7 +103,7 @@ The way to exactly reproduce a generated process is shown in the file `proc_card
 To safe all results for a process you can call the method `print_results`.
 
 ```
-> print_results --path=./results.txt --format=short
+mg5> print_results --path=./results.txt --format=short
 ```
 
 From there you can e.g. read in the cross-sections for further analyses or plots. The file
@@ -114,7 +114,7 @@ To remove all runs in a process you can start a session with `bin/madevent` with
 directory and execute
 
 ```
-> remove all banner -f
+mg5> remove all banner -f
 ```
 
 ## Mad Analysis
