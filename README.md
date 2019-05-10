@@ -219,4 +219,10 @@ mg5> install MadAnalysis5
 ```
 
 Then you can generate a process, output it and launch it, which will now allow you to
-also run MadAnalysis on the output. It will create a default number of plots
+also run MadAnalysis on the output. It will create a default number of plots which can be
+amended within the MG5 session or by editing the file `madanalysis5_parton_card.dat`. The
+output pdf is stored in the run directory of the process' corresponding `Events`
+directory.
+
+Furthermore, standalone `python` and `C++` files for every histogram are created. You
+can find them in the process' directory under `HTML/<runname>/tag_<*>/Output/Histos/MadAnalysis5job_<*>/`.
