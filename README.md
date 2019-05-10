@@ -80,7 +80,7 @@ model's directory. To generate a generic one in dim6 you can use a script within
 ```
 
 The file can then be modified and will set the default parameters every time the model is used. Any other
-card of the type `restrict_[name].dat` can be loaded by appending a `-[name]` when loading the model:
+card of the type `restrict_[name].dat` (with `[name]` not containing a `-`) can be loaded by appending a `-[name]` when loading the model:
 
 ```
 > import model dim6top_LO_UFO-[name]
@@ -118,3 +118,105 @@ directory and execute
 ```
 
 ## Mad Analysis
+
+[MadAnalysis 5](https://www.sciencedirect.com/science/article/pii/S0010465512002950) is a
+single efficient framework for phenomenological analyses. It can read in several MC
+simulator outputs and analyse the data. The general format for storing (parton-level)
+events and their properties is the `Les Houches Event` (lhe) format. It's a single
+file following an XML like structure.
+
+MC-based analyses at parton-level generally use the following steps:
+1. parsing lhe event files of signal and background processes
+2. implementing various selection cuts on the objects
+3. creating histograms representing kinematic quantities
+
+These histograms can e.g. be used for optimization studies (only on parton-level, if no
+detector-simulation involved). Showering and all the other processes are done e.g. by
+PYTHIA / HERWIG etc and can be applied to lhe files.
+Running a hadron-level analysis is much easier and faster after the particles are
+clustered to jets (e.g. using FASTJET). Detector-simulations like DELPHES or PGS4 create
+the reconstructed objects. There are fast detector-simulations that don't run a full
+detector-simulation, but yield reasonable results to (not) motivate certain full
+simulations.
+
+MadAnalysis5 also contains an expert mode that can be used to implement your own
+analysis directly within the `C++` kernel. Data formats that MA5 accepts are among
+others `LHE`, `STDHEP`, `HEPMC` and `LHCO`. It's compatible with almost all data-levels
+and able to create histograms, display the results in latex or html, run selections and,
+if contained in the files, display the whole interaction history of a particle.
+
+### Sample analysis within MadAnalysis5
+
+Analyses within MA5 always follow the same scheme:
+1. **Sample declaration:** gather (multiple) signal and background datasets in an object called `dataset`
+2. **Particle content of events:** associate PDG-id to more intuitive terms as `e+ e-` or define terms like `e (=e+ e-)`.
+3. **Definition of the analysis:** define histograms to be made and selection cuts (called the selection). The ordering of the cuts applied, of course, affects intermediate events.
+4. **Running the analysis:** MA5 generates C++ code for the analysis which is called a job which is executed by MA5.
+5. **Display of results:** MA5 generates a report with several results and the histograms
+
+### First steps with MadAnalysis5 (standalone)
+
+Depending on the location of the MA5 installation the particle content changes. E.g. if
+installed inside a MadGraph installation it automatically uses MG5's particle content.
+Generally, the content can be displayed within an MA5 session via:
+
+```
+ma5> display_particles
+ma5> display_multiparticles
+```
+
+To define own particles, e.g. `mu` as both charged muons use:
+
+```
+ma5> define mu = mu+ mu-
+```
+
+To load MC samples to a MA5 session, e.g. all samples within the directory `samples`:
+
+```
+ma5> import samples/*.lhe.gz
+```
+
+This creates a unique event sample denoted by `defaultset`, containing **all** events.
+To then e.g. apply cuts, use:
+
+```
+ma5> reject MET > 100
+```
+
+This will cut out all events with missing Et > 100 GeV. Another example, where
+events containing mu+ or mu- with Pt < 20 GeV are cut out.
+
+
+```
+ma5> reject (mu) PT < 20
+```
+
+To tell MA5 to generate plots you can then use
+
+```
+ma5> plot M(mu) 20 0 100
+```
+
+This example tells MA5 to plot the mu+ mu- invariant mass in 20 bins ranging
+from 0 to 100 GeV. To finish the selection and execute it, you can create a job.
+It will created in the directory you specify:
+
+```
+ma5> submit <dirname>
+```
+
+which will contain a series of `C++` source and header files.
+
+### Using MadAnalysis5 within MadGraph5
+
+Using MadAnalysis5 within MadGraph5 is really easy. You just need to make sure, MadGraph
+has access to MadAnalysis, by e.g. installing it directly in MadGraph. To do so, open a
+MadGraph session and do
+
+```
+mg5> install MadAnalysis5
+```
+
+Then you can generate a process, output it and launch it, which will now allow you to
+also run MadAnalysis on the output. It will create a default number of plots
