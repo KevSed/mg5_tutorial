@@ -234,6 +234,13 @@ directory.
 Furthermore, standalone `python` and `C++` files for every histogram are created. You
 can find them in the process' directory under `HTML/<runname>/tag_<*>/Output/Histos/MadAnalysis5job_<*>/`.
 
+To make sure, the spin correlations (important for the decays) are treated the right way, it is
+best, to specify the decay chain like this:
+
+```
+mg5> p p > t t~ , (t > w+ b, ...)
+```
+
 
 ### Useful references (cumulated)
 
