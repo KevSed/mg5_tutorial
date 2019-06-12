@@ -76,7 +76,7 @@ EFT-coefficients more permanently for a certain model, you can create a `restric
 model's directory. To generate a generic one in dim6 you can use a script within the model directory:
 
 ```
-~> python2 write_param_card.dat && mv param_card.dat restrict_default.dat
+~> python2 write_param_card.py && mv param_card.dat restrict_default.dat
 ```
 
 The file can then be modified and will set the default parameters every time the model is used. Any other
